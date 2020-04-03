@@ -18,6 +18,6 @@ class PlansController extends Controller
 
     public function index()
     {
-        return view('admin.pages.plans', ['plans' => $this->repository->get() ]);
+        return view('admin.pages.plans', ['plans' => $this->repository->latest()->paginate() ]);
     }
 }

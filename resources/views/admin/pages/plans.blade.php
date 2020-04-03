@@ -17,7 +17,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>Preço</th>
-                    <th>Ações</th>
+                    <th width='50'>Ações</th>
                 </tr>
             </thead>
             @foreach ($plans as $items)
@@ -29,13 +29,16 @@
                     {{ $items->price }}
                 </td>
                 <td>
-                    <a href="#" class="btn btn-warning"></a>
+                    <a href="#" class="btn btn-warning">Ver</a>
                 </td>
 
             </tr>
 
             @endforeach
         </table>
+    </div>
+    <div class="card-footer">
+        {{ $plans->links() }}
     </div>
 </div>
 @stop
