@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 
 class PlansController extends Controller
 {
@@ -20,4 +20,19 @@ class PlansController extends Controller
     {
         return view('admin.pages.plans', ['plans' => $this->repository->latest()->paginate() ]);
     }
+
+    public function create()
+    {
+        return view('admin.pages.create');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $data['url'] = Str::kebab($request->name);
+
+        $this->repository->create($data);
+        return redirect()->route('plans.index');
+    }
+    
 }
