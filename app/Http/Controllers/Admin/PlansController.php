@@ -30,8 +30,8 @@ class PlansController extends Controller
     {
         $data = $request->all();
         $data['url'] = Str::kebab($request->name);
-
         $this->repository->create($data);
+        
         return redirect()->route('plans.index');
     }
     
