@@ -9,7 +9,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        #filtros 
+        #filtros
         <a href="{{ route('plans.create') }}" class="btn btn-dark">Add</a>
     </div>
     <div class="card-body">
@@ -27,10 +27,10 @@
                     {{ $items->name }}
                 </td>
                 <td>
-                    {{ $items->price }}
+                    R${{ number_format($items->price, 2, ',', '.') }}
                 </td>
                 <td>
-                    <a href="#" class="btn btn-warning">Ver</a>
+                    <a href="{{ route('plans.show',$items->url)}}" class="btn btn-warning">Ver</a>
                 </td>
 
             </tr>

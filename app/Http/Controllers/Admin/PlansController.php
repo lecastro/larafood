@@ -13,12 +13,12 @@ class PlansController extends Controller
 
     public function __construct(Plan $plan)
     {
-        $this->repository = $plan;    
+        $this->repository = $plan;
     }
 
     public function index()
     {
-        return view('admin.pages.plans', ['plans' => $this->repository->latest()->paginate() ]);
+        return view('admin.pages.plans', ['plans' => $this->repository->latest()->paginate()]);
     }
 
     public function create()
@@ -31,8 +31,18 @@ class PlansController extends Controller
         $data = $request->all();
         $data['url'] = Str::kebab($request->name);
         $this->repository->create($data);
-        
+
         return redirect()->route('plans.index');
     }
-    
+
+    public function show($url)
+    {
+        $data = $this->repository->where('url', $url)->first();
+
+        if (!$data) {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.show', ['plans' => $data]);
+    }
 }
