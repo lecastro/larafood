@@ -9,4 +9,10 @@ class Plan extends Model
     protected $fillable = [
         'name', 'url', 'price', 'description'
     ];
+    
+    public function search($filter = null)
+    {
+        return $this->where('name', 'LIKE', "%{$filter}%")->paginate();
+    }
+
 }

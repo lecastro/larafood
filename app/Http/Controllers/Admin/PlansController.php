@@ -45,4 +45,28 @@ class PlansController extends Controller
 
         return view('admin.pages.show', ['plans' => $data]);
     }
+
+    public function delete($url)
+    {
+        $data = $this->repository->where('url', $url)->first();
+
+        if (!$data) {
+            return redirect()->back();
+        }
+
+        $data->delete();
+
+        return redirect()->route('plans.index');
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+        $plans = $this->repository->search($request->filter);
+
+        return view('admin.pages.plans', [
+            'plans' => $plans,
+            'filters' => $filters
+        ]);
+    }
 }
