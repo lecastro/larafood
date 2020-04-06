@@ -18,7 +18,7 @@ class PlansController extends Controller
 
     public function index()
     {
-        return view('admin.pages.plans', ['plans' => $this->repository->latest()->paginate()]);
+        return view('admin.pages.index', ['plans' => $this->repository->latest()->paginate()]);
     }
 
     public function create()
@@ -64,7 +64,7 @@ class PlansController extends Controller
         $filters = $request->except('_token');
         $plans = $this->repository->search($request->filter);
 
-        return view('admin.pages.plans', [
+        return view('admin.pages.index', [
             'plans' => $plans,
             'filters' => $filters
         ]);
