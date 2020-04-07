@@ -29,9 +29,7 @@ class PlansController extends Controller
 
     public function store(PlansRequest $request)
     {
-        $data = $request->all();
-        $data['url'] = Str::kebab($request->name);
-        $this->repository->create($data);
+        $this->repository->create($request->all());
 
         return redirect()->route('plans.index');
     }
