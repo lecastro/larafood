@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Requests\PlansRequest;
 
 class PlansController extends Controller
 {
@@ -26,7 +27,7 @@ class PlansController extends Controller
         return view('admin.pages.create');
     }
 
-    public function store(Request $request)
+    public function store(PlansRequest $request)
     {
         $data = $request->all();
         $data['url'] = Str::kebab($request->name);
@@ -83,7 +84,7 @@ class PlansController extends Controller
         ]);
     }
 
-    public function update(Request $request, $url)
+    public function update(PlansRequest $request, $url)
     {
         $data = $this->repository->where('url', $url)->first();
 
