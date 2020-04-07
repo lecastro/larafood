@@ -211,6 +211,7 @@ return [
         [
             'text' => 'planos',
             'url'  => 'admin/plans',
+            'icon' => 'far fa-list-alt'
         ],
     ],
 

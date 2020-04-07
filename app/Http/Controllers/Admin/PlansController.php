@@ -69,4 +69,30 @@ class PlansController extends Controller
             'filters' => $filters
         ]);
     }
+
+    public function edit($url)
+    {
+        $data = $this->repository->where('url', $url)->first();
+
+        if (!$data) {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.edit', [
+            'plans' => $data
+        ]);
+    }
+
+    public function update(Request $request, $url)
+    {
+        $data = $this->repository->where('url', $url)->first();
+
+        if (!$data) {
+            return redirect()->back();
+        }
+
+        $data->update($request->all());
+
+        return redirect()->route('plans.index');
+    }
 }

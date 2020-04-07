@@ -8,7 +8,7 @@
     <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" >Dashboard</a></li>
     <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}" >Planos</a></li>
 </ol>
-<h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark">Add</a></h1>
+<h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark"><i class="fas fa-plus-square"></i></a></h1>
 @stop
 
 @section('content')
@@ -26,7 +26,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>Preço</th>
-                    <th width='50'>Ações</th>
+                    <th width='150'>Ações</th>
                 </tr>
             </thead>
             @foreach ($plans as $items)
@@ -37,10 +37,10 @@
                 <td>
                     R${{ number_format($items->price, 2, ',', '.') }}
                 </td>
-                <td>
-                    <a href="{{ route('plans.show',$items->url)}}" class="btn btn-warning">Ver</a>
+                <td style="width=10px"> 
+                    <a href="{{ route('plans.edit', $items->url) }}" class="btn btn-info">edit</a>
+                    <a href="{{ route('plans.show', $items->url) }}" class="btn btn-warning">Ver</a>
                 </td>
-
             </tr>
 
             @endforeach
