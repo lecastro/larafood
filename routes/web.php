@@ -2,16 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::any('admin/plans/search', "Admin\PlansController@search")->name('plans.search');
-Route::get('admin/plans', "Admin\PlansController@index")->name('plans.index');
-Route::get('admin/plans/create', "Admin\PlansController@create")->name('plans.create');
-Route::get('admin/plans/{url}', "Admin\PlansController@show")->name('plans.show');
-Route::post('admin/plans', "Admin\PlansController@store")->name('plans.store');
-Route::delete('admin/plans/{url}', "Admin\PlansController@delete")->name('plans.delete');
-Route::get('admin/plans/{url}/edit', "Admin\PlansController@edit")->name('plans.edit');
-Route::put('admin/plans/{url}', "Admin\PlansController@update")->name('plans.update');
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    Route::any('plans/search', "PlansController@search")->name('plans.search');
+    Route::get('plans', "PlansController@index")->name('plans.index');
+    Route::get('plans/create', "PlansController@create")->name('plans.create');
+    Route::get('plans/{url}', "PlansController@show")->name('plans.show');
+    Route::post('plans', "PlansController@store")->name('plans.store');
+    Route::delete('plans/{url}', "PlansController@delete")->name('plans.delete');
+    Route::get('plans/{url}/edit', "PlansController@edit")->name('plans.edit');
+    Route::put('/plans/{url}', "PlansController@update")->name('plans.update');
 
-Route::get('admin', "Admin\PlansController@index")->name('admin.index');
+    Route::get('/', "PlansController@index")->name('admin.index');
+});
+
 
 Route::get('/', function () {
     return view('welcome');
