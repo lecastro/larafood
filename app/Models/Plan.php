@@ -16,7 +16,7 @@ class Plan extends Model
     }
 
     //recionamento
-    public function  delails()
+    public function details()
     {
         return $this->hasMany(DetailPlans::class);
     }

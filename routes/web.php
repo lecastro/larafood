@@ -3,6 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
+
+    /**
+    * Routes details plan
+    */
+    Route::get('plans/{url}/details', "DetailPlansController@index")->name('detaiils.plans.index');
+
+    /**
+    * Routes plan
+    */
     Route::any('plans/search', "PlansController@search")->name('plans.search');
     Route::get('plans', "PlansController@index")->name('plans.index');
     Route::get('plans/create', "PlansController@create")->name('plans.create');
