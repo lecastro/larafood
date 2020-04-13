@@ -8,13 +8,13 @@
     <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
     <li class="breadcrumb-item"><a href="{{ route('plans.show', $plan->url) }}">{{ $plan->name }}</a></li>
-    <li class="breadcrumb-item active"><a href="{{ route('details.plans.index', $plan->url) }}" class="active">Detalhes</a></li>
+    <li class="breadcrumb-item active"><a href="{{ route('details.plans.index', $plan->url) }}"
+            class="active">Detalhes</a></li>
 </ol>
 
-<h1>Detalhes do plano {{ $plan->name }} <a href="{{ route('details.plans.create', $plan->url) }}" class="btn btn-dark">ADD</a></h1>
+<h1>Detalhes do plano {{ $plan->name }} <a href="{{ route('details.plans.create', $plan->url) }}"
+        class="btn btn-dark">ADD</a></h1>
 
-<h1>Detalhes do plano <a href="{{ route('details.plans.create', $plan->url) }}" class="btn btn-dark"><i
-            class="fas fa-plus-square"></i></a></h1>
 @stop
 
 @section('content')
@@ -34,7 +34,8 @@
                 </td>
                 <td style="width=10px;">
                     <a href="{{ route('details.plans.edit', [$plan->url, $detail->id]) }}" class="btn btn-info">Edit</a>
-                    <a href="{{ route('details.plans.show', [$plan->url, $detail->id]) }}" class="btn btn-warning">VER</a>
+                    <a href="{{ route('details.plans.show', [$plan->url, $detail->id]) }}"
+                        class="btn btn-warning">VER</a>
                 </td>
             </tr>
             @endforeach
