@@ -36,24 +36,30 @@ class PlansController extends Controller
 
     public function show($url)
     {
-        $data = $this->repository->where('url', $url)->first();
+        $plan = $this->repository->where('url', $url)->first();
 
-        if (!$data) {
+        if (!$plan) {
             return redirect()->back();
         }
 
-        return view('admin.pages.plans.show', ['plans' => $data]);
+        return view('admin.pages.plans.show', ['plans' => $plan]);
     }
 
     public function delete($url)
     {
-        $data = $this->repository->where('url', $url)->first();
+        $plan = $this->repository->with('details')->where('url', $url)->first();
 
-        if (!$data) {
+        if (!$plan) {
             return redirect()->back();
         }
 
-        $data->delete();
+        if ($plan->details->count() > 0) {
+            return redirect()
+                        ->back()
+                        ->with('error', 'Existem detahes vinculados a esse plano, portanto não pode deletar');
+        }
+        
+        $plan->delete();
 
         return redirect()->route('plans.index');
     }
@@ -71,26 +77,26 @@ class PlansController extends Controller
 
     public function edit($url)
     {
-        $data = $this->repository->where('url', $url)->first();
+        $plan = $this->repository->where('url', $url)->first();
 
-        if (!$data) {
+        if (!$plan) {
             return redirect()->back();
         }
 
         return view('admin.pages.plans.edit', [
-            'plans' => $data
+            'plans' => $plan
         ]);
     }
 
     public function update(PlansRequest $request, $url)
     {
-        $data = $this->repository->where('url', $url)->first();
+        $plan = $this->repository->where('url', $url)->first();
 
-        if (!$data) {
+        if (!$plan) {
             return redirect()->back();
         }
 
-        $data->update($request->all());
+        $plan->update($request->all());
 
         return redirect()->route('plans.index');
     }
