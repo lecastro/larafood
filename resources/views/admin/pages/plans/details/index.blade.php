@@ -20,6 +20,9 @@
 @section('content')
 <div class="card">
     <div class="card-body">
+
+        @include('admin.pages.plans.includes.alerts')
+
         <table class="table table-condensend">
             <thead>
                 <tr>
