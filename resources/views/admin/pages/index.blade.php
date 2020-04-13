@@ -38,7 +38,7 @@
                     R${{ number_format($items->price, 2, ',', '.') }}
                 </td>
                 <td style="width=10px"> 
-                    <a href="{{ route('detaiils.plans.index', $items->url) }}" class="btn btn-info">Detalhes</a>
+                    <a href="{{ route('details.plans.index', $items->url) }}" class="btn btn-info">Detalhes</a>
                     <a href="{{ route('plans.edit', $items->url) }}" class="btn btn-info">edit</a>
                     <a href="{{ route('plans.show', $items->url) }}" class="btn btn-warning">Ver</a>
                 </td>

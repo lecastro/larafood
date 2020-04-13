@@ -7,19 +7,24 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     /**
     * Routes details plan
     */
-    Route::get('plans/{url}/details', "DetailPlansController@index")->name('detaiils.plans.index');
-
+    Route::delete('plans/{url}/details/{idDetail}', 'DetailPlansController@destroy')->name('details.plans.destroy');
+    Route::get('plans/{url}/details/create', 'DetailPlansController@create')->name('details.plans.create');
+    Route::get('plans/{url}/details/{idDetail}', 'DetailPlansController@show')->name('details.plans.show');
+    Route::put('plans/{url}/details/{idDetail}', 'DetailPlansController@update')->name('details.plans.update');
+    Route::get('plans/{url}/details/{idDetail}/edit', 'DetailPlansController@edit')->name('details.plans.edit');
+    Route::post('plans/{url}/details', 'DetailPlansController@store')->name('details.plans.store');
+    Route::get('plans/{url}/details', 'DetailPlansController@index')->name('details.plans.index');
     /**
     * Routes plan
     */
-    Route::any('plans/search', "PlansController@search")->name('plans.search');
-    Route::get('plans', "PlansController@index")->name('plans.index');
-    Route::get('plans/create', "PlansController@create")->name('plans.create');
-    Route::get('plans/{url}', "PlansController@show")->name('plans.show');
-    Route::post('plans', "PlansController@store")->name('plans.store');
-    Route::delete('plans/{url}', "PlansController@delete")->name('plans.delete');
-    Route::get('plans/{url}/edit', "PlansController@edit")->name('plans.edit');
-    Route::put('/plans/{url}', "PlansController@update")->name('plans.update');
+    Route::get('plans/create', 'PlansController@create')->name('plans.create');
+    Route::put('plans/{url}', 'PlansController@update')->name('plans.update');
+    Route::get('plans/{url}/edit', 'PlansController@edit')->name('plans.edit');
+    Route::any('plans/search', 'PlansController@search')->name('plans.search');
+    Route::delete('plans/{url}', 'PlansController@destroy')->name('plans.destroy');
+    Route::get('plans/{url}', 'PlansController@show')->name('plans.show');
+    Route::post('plans', 'PlansController@store')->name('plans.store');
+    Route::get('plans', 'PlansController@index')->name('plans.index');
 
     Route::get('/', "PlansController@index")->name('admin.index');
 });
