@@ -26,7 +26,7 @@ class DetailPlansController extends Controller
 
         $details = $plan->details()->paginate();
 
-        return view('admin.pages.details.index', [
+        return view('admin.pages.plans.details.index', [
             'plan' => $plan,
             'details' => $details
         ]);
@@ -38,7 +38,7 @@ class DetailPlansController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages.details.create', [
+        return view('admin.pages.plans.details.create', [
             'plan' => $plan,
         ]);
     }
@@ -52,5 +52,15 @@ class DetailPlansController extends Controller
         $plan->details()->create($request->all());
 
         return redirect()->route('details.plans.index', $plan->url);
+    }
+
+    public function show()
+    {
+        # code...
+    }
+
+    public function edit()
+    {
+        # code...
     }
 }

@@ -18,7 +18,7 @@
 <div class="card">
     <div class="card-body">
         <form action="{{ route('details.plans.store', $plan->url) }}" method="POST">
-            @include('admin.pages.details._partials.form')
+            @include('admin.pages.plans.details._partials.form')
         </form>
     </div>
 </div>

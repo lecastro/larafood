@@ -19,12 +19,12 @@ class PlansController extends Controller
 
     public function index()
     {
-        return view('admin.pages.index', ['plans' => $this->repository->latest()->paginate()]);
+        return view('admin.pages.plans.index', ['plans' => $this->repository->latest()->paginate()]);
     }
 
     public function create()
     {
-        return view('admin.pages.create');
+        return view('admin.pages.plans.create');
     }
 
     public function store(PlansRequest $request)
@@ -42,7 +42,7 @@ class PlansController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages.show', ['plans' => $data]);
+        return view('admin.pages.plans.show', ['plans' => $data]);
     }
 
     public function delete($url)
@@ -63,7 +63,7 @@ class PlansController extends Controller
         $filters = $request->except('_token');
         $plans = $this->repository->search($request->filter);
 
-        return view('admin.pages.index', [
+        return view('admin.pages.plans.index', [
             'plans' => $plans,
             'filters' => $filters
         ]);
@@ -77,7 +77,7 @@ class PlansController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages.edit', [
+        return view('admin.pages.plans.edit', [
             'plans' => $data
         ]);
     }
