@@ -215,7 +215,7 @@ return [
         ],
         [
             'text' => 'Perfis',
-            'url'  => 'admin/perfiles',
+            'url'  => 'admin/profiles',
             'icon' => 'fas fa-address-book'
         ],
     ],

@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
-
+    /**
+    * Routes profiles
+    */
+    Route::resource('profiles', 'ACL\ProfileController');
+    
     /**
     * Routes details plan
     */
