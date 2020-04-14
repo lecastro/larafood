@@ -209,9 +209,14 @@ return [
 
     'menu' => [
         [
-            'text' => 'planos',
+            'text' => 'Planos',
             'url'  => 'admin/plans',
             'icon' => 'far fa-list-alt'
+        ],
+        [
+            'text' => 'Perfis',
+            'url'  => 'admin/perfiles',
+            'icon' => 'fas fa-address-book'
         ],
     ],
 
