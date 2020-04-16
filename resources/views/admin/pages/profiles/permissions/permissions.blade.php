@@ -10,7 +10,7 @@
 
     <h1>Permissões do perfil <strong>{{ $profile->name }}</strong></h1>
 
-    <a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a>
+    {{-- <a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a> --}}
 
 @stop
 
